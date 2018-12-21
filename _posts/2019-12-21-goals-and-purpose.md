@@ -20,5 +20,5 @@ I'd like to learn how to turn a Jekyll blog into something more powerful, someth
 - pagination
 - seo
 
-There are plugins that will add each of those features, but they're not that easy to set up. That's what I'm going to do here: start with the default Minima theme and add one feature at a time, until I've got something that's as powerful as WordPress.
+There are themes that have those features and plugins that will add each of those features, but they're not that easy to set up. That's what I'm going to do here: start with the default Minima theme and add one feature at a time, until I've got something that's closer to a full featured blog.
 
