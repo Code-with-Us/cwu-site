@@ -4,7 +4,7 @@ date:   2018-12-21 09:16:10 -0500
 excerpt_separator: <!--more-->
 layout: post
 permalink: date
-published: true
+published: false
 tags: [install, setup]
 title:  "Welcome to Jekyll!"
 ---

@@ -20,6 +20,10 @@ theme: minima
 plugins:
   - jekyll-feed
 
+# Minima navigation menu
+# header_pages:
+#   - _pages/about.md
+#   - _pages/resources.md
 
 # To see a full list of default configuration settings: 
 # https://jekyllrb.com/docs/configuration/default/
