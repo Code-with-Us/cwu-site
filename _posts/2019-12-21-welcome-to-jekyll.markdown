@@ -1,27 +1,21 @@
 ---
-layout: post
-title:  "The Install"
-date:   2018-12-21 09:16:10 -0500
-categories: jekyll update
-tags:
+categories: [jekyll, update, learning, howto]
+date:   2018-12-21 09:45:00 -0500
 excerpt_separator: <!--more-->
+layout: post
+permalink: date
+published: true
+tags: [config, setup, install]
+title:  "The Install"
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+I'm started this project to explore and learn more about Jekyll and some of its themes and plugins. I'm thinking about trying to make my own theme, but that will probably come a bit later.
 
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+I've worked with Jekyll before, but I'd like to learn a lot more about it and how to turn a Jekyll blog into something more powerful, something that includes things like:
 
-Jekyll also offers powerful support for code snippets:
+- search
+- archives
+- categories and tags
+- pagination
+- seo
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+There are plugins that will add each of those features, but they're not that easy to set up. That's what I'm going to do here: start with the default Minima theme and add one feature at a time, until I've got something that's as powerful as WordPress.

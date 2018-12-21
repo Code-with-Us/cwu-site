@@ -1,10 +1,12 @@
 ---
-layout: post
-title:  "Welcome to Jekyll!"
+categories: [jekyll, update, learning, howto]
 date:   2018-12-21 09:16:10 -0500
-categories: jekyll update
-tags: 
 excerpt_separator: <!--more-->
+layout: post
+permalink: date
+published: true
+tags: [install, setup]
+title:  "Welcome to Jekyll!"
 ---
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
