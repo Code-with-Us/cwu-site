@@ -3,7 +3,7 @@ categories: [jekyll, learning, howto]
 date:   2018-12-21 09:25:00 -0500
 excerpt_separator: <!--more-->
 layout: post
-permalink: date
+# permalink:
 published: true
 tags: [goals, todo]
 title:  "Goals and Purpose"
