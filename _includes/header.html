@@ -1,10 +1,12 @@
 <header class="site-header" role="banner">
 
         <div class="wrapper">
+          <!-- Declare default_paths and assign it to the array of paths created by running the 'map' filter on the built-in site.pages object using the key 'path' -->
           {%- assign default_paths = site.pages | map: "path" -%}
+          <!-- Declare page_paths and assign it to the array of page file names in the header_pages object. If there aren't any such page file names, assign page_paths to the default_paths array. -->
           {%- assign page_paths = site.header_pages | default: default_paths -%}
-          <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
-      
+          <a class="site-title" rel="author" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
+          <!-- If there are any pages, create a hidden hamburger nav element -->
           {%- if page_paths -%}
             <nav class="site-nav">
               <input type="checkbox" id="nav-trigger" class="nav-trigger" />
@@ -17,6 +19,7 @@
               </label>
       
               <div class="trigger">
+                <!-- For each page file _path_ in our page_paths variable, declare a new variable called my_page and assign it to the first item in the array of page objects created by finding every page object in the site.pages object, where that object's 'path' key has the value of the _path_ we're currently iterating over.  -->
                 {%- for path in page_paths -%}
                   {%- assign my_page = site.pages | where: "path", path | first -%}
                   {%- if my_page.title -%}

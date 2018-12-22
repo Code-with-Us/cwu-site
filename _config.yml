@@ -3,16 +3,14 @@
 # Standard settings
 
 # Site settings
-title: Your awesome title
-email: your-email@example.com
+title: Code with Us
+email: julian@codewithus.tube
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Code with Us is a project to help newcomers to web development learn by participating in and watching webinars and coding sessions about dev basics like using Git, using the command line, working with code editors, etc.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+twitter_username: codewithustube
+github_username:  codewithus
 
 # Build settings
 markdown: kramdown
@@ -20,10 +18,14 @@ theme: minima
 plugins:
   - jekyll-feed
 
+include:
+  - _pages
+
 header_pages:
-  - ./_pages/about.md
-  - ./_pages/blog.md
-  - ./_pages/resources.md
+  - _pages/about.md
+  - _pages/blog.md
+  - _pages/resources.md
+  - _pages/forum.md
 
 # To see a full list of default configuration settings: 
 # https://jekyllrb.com/docs/configuration/default/

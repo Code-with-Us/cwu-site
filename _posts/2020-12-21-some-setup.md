@@ -1,12 +1,12 @@
 ---
-categories: [jekyll, learning, howto]
+categories: [jekyll]
 date:   2018-12-21 09:45:00 -0500
 excerpt_separator: <!--more-->
 layout: post
 # permalink:
 published: true
 tags: [setup, config]
-title:  "Some Setup"
+title:  "Jekyll Project: Some Setup"
 ---
 
 The first thing I did after installing the project was add all of the folders I'll need later - _pages, _includes, assets, _sass, and _data. These folders aren't included in the base install, because you don't need them unless you plan to customize your blog and add new pages and functionality. If you're fuzzy on what any of those directories do, the [Jekyll documentation](https://jekyllrb.com/docs/) is pretty good. Look at the "Content" section in the sidebar on the right.

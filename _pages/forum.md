@@ -1,12 +1,12 @@
 ---
-categories: [resources, links]
+categories: [community]
 date: 2018-12-21 10:45:00 -0500
 excerpt_separator: <!--more-->
 layout: page
-permalink: /resources/
+permalink: /forum/
 published: true
-tags: [resources, links, tutorials, blogs, howto]
-title: "Resources"
+tags: [forum, discussion, community, help]
+title: "Forum"
 ---
 
 A list of sites, blogs, tutorials, etc.

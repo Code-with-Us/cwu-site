@@ -1,12 +1,12 @@
 ---
-categories: [jekyll, learning, howto]
+categories: [jekyll]
 date:   2018-12-21 09:25:00 -0500
 excerpt_separator: <!--more-->
 layout: post
 # permalink:
 published: true
 tags: [goals, todo]
-title:  "Goals and Purpose"
+title:  "Jekyll Project: Goals and Purpose"
 ---
 I'm started this project to learn more about Jekyll and some of its themes and plugins. I'm thinking about trying to make my own theme, but that will probably come a bit later.
 
