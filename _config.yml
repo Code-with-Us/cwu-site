@@ -6,7 +6,7 @@
 title: Code with Us
 email: julian@codewithus.tube
 description: >- # this means to ignore newlines until "baseurl:"
-  Code with Us is a project to help newcomers to web development learn by participating in and watching webinars and coding sessions about dev basics like using Git, using the command line, working with code editors, etc.
+  Code with Us helps newcomers to web development learn the basics by participating in and watching webinars and coding sessions.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: codewithustube
