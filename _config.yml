@@ -17,8 +17,8 @@ liquid:
   error_mode: strict
   # this makes checking for variable existence difficult
   # https://github.com/Shopify/liquid/issues/1034
-  strict_variables: true
-  strict_filters: true
+  #strict_variables: true
+  #strict_filters: true
 markdown: kramdown
 theme: minima
 plugins:

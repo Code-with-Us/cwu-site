@@ -1,12 +1,12 @@
 ---
-categories:
+categories: jekyll
 date:   2018-12-21 14:25:00 -0500
 excerpt_separator: <!--more-->
 layout: post
 # permalink:
 published: true
 tags: [learning, howto, navigation, menu, Minima, themes]
-title:  "Jekyll Project: How the Minima Theme Handles Navigation"
+title:  "Navigation Menus in Jekyll's Minima Theme"
 ---
 
 This is a post about site navigation in Jekyll version 3.8.5 using Jekyll's default theme Minima version 2.5.0. If you have a Jekyll blog, have written a few posts, created an additional page or two, and dabbled in creating includes and layouts, then this post is for you.
@@ -21,13 +21,13 @@ header_pages:
   - about.md
 ```
 <br>
-Stop your server, if it's running, and restart it. If you still have an about.md file in your root directory and you haven't changed your site's styles too drastically, then when you look at your homepage, you'll see an "About" menu item at the top right. 
+Make sure you still have an about.md file in your root directory. Stop your server, if it's running, and restart it. If you haven't changed your site's styles too drastically, then when you look at your homepage, you'll see an "About" menu item at the top right. 
 
 
 ![minima default menu](/assets/images/welcome-shot.png){:class="img-responsive"}
 
 
-To add additional menu items, just add the names of the pages you'd like to include in your menu, in the order in which you'd like them to appear, e.g.,
+To add additional menu items, just add the file names of the pages you'd like to include in your menu, in the order in which you'd like them to appear, e.g.,
 
 
 ```yml
@@ -38,7 +38,7 @@ header_pages:
 ```
 
 
-By default additional pages need to be added to your project's root directory. That's not a best practice. Generally speaking, pages should be placed in the _pages directory. In order to do that you'll need to add one additional line to your _config.yml file:
+By default additional pages need to be added to your project's root directory. But the Jekyll docs recommend placing your pages in a _pages directory. In order to do that you'll need to add one additional line to your _config.yml file:
 
 ```yml
 include:
@@ -66,19 +66,19 @@ Let's take a look at the logic that's powering Minima's menu. Use 'bundle show m
 In the *_includes* folder, find and open the *header.html* file. Take a look at lines 4 and 5:
 
 {% raw %}
-```markdown
+```rb
 {%- assign default_paths = site.pages | map: "path" -%}
 {%- assign page_paths = site.header_pages | default: default_paths -%}
 ```
 {% endraw %}
 
-Jekyll uses a templating language called Liquid. That's what we're seeing here. In short, lines 4 and 5 declare a new variable called *page_paths* that is assigned to an array of file paths leading to the pages we'd like to appear in our menu, e.g. ["_pages/about.md", "_pages/blog.md"]. Now, let's walk through it.
+What we're seeing here is Liquid markup. In short, lines 4 and 5 declare a new variable called *page_paths* that is assigned to an array of file paths leading to the pages we'd like to appear in our menu, e.g. ["_pages/about.md", "_pages/blog.md"]. Now, let's walk through it.
 
 ### Line 4
 - Line 4 declares a new variable called *default_paths* and assigns it to an expression that evaluates to an array of page file paths. 
 - *site.pages* is a built-in Jekyll object that contains an array of page objects. Each page object contains metadata about a page on your site. 
 - The pipe operator tells Liquid to take the value of the expression to the left of the pipe and run the filter to the right of the pipe on that value.  In this case, we're running the *map* filter on *site.pages*. 
-- The *map* filter creates an array of values by extracting the values of a named property from another object. In this case, *map* is using the "path" key, which we know is a property of each *site.pages* object, to extract the values associated with that key. (How do we know that *site.pages* contains a path property?)
+- The *map* filter creates an array of values by extracting the values of a named property from another object. In this case, *map* is using the "path" key, which we know is a property of each *site.pages* object, to extract the values associated with that key.
 
 ### Line 5
 - Line 5 declares a new variable called *page_paths* and assigns to it an expression that evaluates to another array of page file paths. 
@@ -88,17 +88,17 @@ Jekyll uses a templating language called Liquid. That's what we're seeing here. 
 So, we have a *page_paths* variable with some page paths in it, but what are we going to do with it? Well, we used to use page_paths to determine whether there were any pages to navigate to, in which case, Jekyll would display our navigation menu to the user. The code looked like this:
 
 {% raw %}
-```markdown
+```rb
 {%- if page_paths -%}
-...
+...navigation markup
 {% endif %}
 ```
 {% endraw %}
 
-This changed a bit at the end of October, 2018, when a couple of lines were altered fix a small bug that occurred on mobile devices when the nav element was empty. A new line was added just after lines 4 and 5:
+This changed a bit at the end of October, 2018, when a new line was added just after lines 4 and 5:
 
 {% raw %}
-```markdown
+```rb
 {%- assign titles_size = site.pages | map: 'title' | join: '' | size -%}
 ```
 {% endraw %}
@@ -112,24 +112,27 @@ Let's walk through it.
 - Next, the array created by *map* is passed to *join.* *join* combines the items in an array into a single string using its argument as a separator. In this case, the argument is an empty string, which will have the effect of joining our page titles end-to-end.
 - Next, the string created by *join* is passed to *size.* *size* returns the number of characters in a string (or the number of items in an array).
 
-The *titles-size* variable is then used to determine whether there are any pages to display in the navigation menu. We wouldn't want a hamburger menu to appear on a user's mobile device, if there weren't in fact any pages to navigate to.  The code that performs this check appears on line 9:
+The line testing for the existence of *page_paths* up above, was then swapped out for a test for whether *titles_size* is greater then zero:
 
 {% raw %}
-```markdown
+```rb
 {%- if titles_size > 0 -%}
-...
+...navigation markup
 {% endif %}
 ```
 {% endraw %}
 
+Why the change? Well, imagine you need a single page site. Not even an about.md, just the index.md. In that case, *page_paths* will still contain our default paths: index.md, 404.html, assets/main.scss, and feed.xml. And because we were using *page_paths* to decided when to show our menu, on a phone or small screen, users would see a hamburger menu. Even worse, if you had given index.md a title in the front matter, say, "Home," then when opened the hamburger would contain a "Home" item, even on the homepage. That's not what we want.
 
-What happens when you apply map to an empty array in Liquid? (Assuming you can have an empty array in Liquid.)
-Can you have an array literal in Liquid? 
-{% assign myCats = page.categories | json %}
-This at least works-
-{% if myCats.size > 0 %}
-Hello!
-{% else %}
-Uh oh!
-{{myCats}}
-{% endif %}
+![hamburger open state](/assets/images/jekyll-hamburger-open.png){:class="img-responsive"}
+
+Switching from *page_paths* to *titles_size* solved this problem. If you're working on a single page site, then as long as you do not give index.md a title in the front matter, *titles_size* will be zero. It doesn't even matter whether you have a *header_pages* setting containing about.md in _config.yml, because you're no longer checking *page_paths* when deciding whether to show the menu. 
+
+
+
+
+
+{% raw %}
+```rb
+```
+{% endraw %}
